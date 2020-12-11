@@ -12,4 +12,25 @@ public class Request {
 	public String getBody() {
 		return body;
 	}
+	public String getStatus() {
+		return this.status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getDetail() {
+		return this.detail;
+	}
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
+	public LocalDateTime getCreatedTimeStamp() {
+		return this.createdTimeStamp;
+	}
+	public LocalDateTime getModifiedTimeStamp() {
+		return this.modifiedTimeStamp;
+	}
+	public void setModifiedTimeStamp(LocalDateTime mTS) {
+		this.modifiedTimeStamp = mTS;
+	}
 }
