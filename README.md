@@ -1,2 +1,7 @@
-# back-end-take-home-java
-Implement a small api for interacting with a callback based third-party service
+To run application, run the following command in root project directory
+
+MacOS/Linux:
+./mvnw spring-boot:run
+
+Windows:
+mvnw spring-boot:run
