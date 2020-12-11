@@ -33,4 +33,7 @@ public class Request {
 	public void setModifiedTimeStamp(LocalDateTime mTS) {
 		this.modifiedTimeStamp = mTS;
 	}
+	public String toString() {
+		return "Body: " + body + "\nStatus: " + status + "\nDetail: " + detail + "\nCTS: " + createdTimeStamp + "\nMTS: " + modifiedTimeStamp;
+	}
 }
