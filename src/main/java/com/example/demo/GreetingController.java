@@ -1,9 +1,12 @@
 package com.example.demo;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +40,21 @@ public class GreetingController {
 	public ResponseEntity<String> started(@PathVariable(value = "id") Long id, @RequestBody String body) {
 		Request request = map.get(id);
 		request.setStatus(body);
+		request.setModifiedTimeStamp(LocalDateTime.now());
 		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+	}
+	@PutMapping("/callback/{id}")
+	public ResponseEntity<String> update(@PathVariable(value = "id") Long id, @RequestBody Request newRequest) {
+		Request oldRequest = map.get(id);
+		oldRequest.setStatus(newRequest.getStatus());
+		oldRequest.setDetail(newRequest.getDetail());
+		oldRequest.setModifiedTimeStamp(LocalDateTime.now());
+		return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+	}
+	@GetMapping("/status/{id}")
+	public Request status(@PathVariable(value = "id") Long id) {
+		Request request = map.get(id);
+		return request;
 	}
 
 	public void fakeRequest(String url, String body) {}
